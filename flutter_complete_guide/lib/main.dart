@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyCoolApp());
@@ -22,30 +24,43 @@ class MyCoolAppState extends State<MyCoolApp> {
 
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite color?',
+      'What\'s your favorite Soccer team?',
       'What\'s your favorite animal?'
     ];
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My First App'),
+          title: Text('TikTok'),
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: answerQuestion,
+            //Top section
+            Container(
+              height: 100.0,
+              color: Colors.yellow[300],
             ),
-            RaisedButton(
-                child: Text('Answer 2'),
-                onPressed: () => print('Answer 2 Chosen')),
-            RaisedButton(
-                child: Text('Answer 3'),
-                onPressed: () {
-                  print('Answer 3 chosen');
-                }),
+            //Middle Section
+            Expanded(
+                child: Row(
+              children: [
+                Expanded(
+                    child: Container(
+                  color: Colors.green[300],
+                )),
+                Container(
+                  width: 100.0,
+                  color: Colors.red[300],
+                )
+              ],
+            )),
+
+            //Bottom Section
+            Container(
+              height: 80.0,
+              color: Colors.blue[300],
+            )
           ],
         ),
       ),
