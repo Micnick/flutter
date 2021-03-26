@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() => runApp(MyCoolApp());
 
@@ -6,17 +7,17 @@ void main() => runApp(MyCoolApp());
 class MyCoolApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyCoolAppState();
+    return _MyCoolAppState();
   }
 }
 
-class MyCoolAppState extends State<MyCoolApp> {
-  var questionIndex = 0;
+class _MyCoolAppState extends State<MyCoolApp> {
+  var _questionIndex = 0;
 //Handler of button
   void answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
-      print(questionIndex);
+      _questionIndex = _questionIndex + 1;
+      print(_questionIndex);
     });
   }
 
@@ -27,13 +28,14 @@ class MyCoolAppState extends State<MyCoolApp> {
     ];
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('My First App'),
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Question(questions[_questionIndex]),
             RaisedButton(
               child: Text('Answer 1'),
               onPressed: answerQuestion,
